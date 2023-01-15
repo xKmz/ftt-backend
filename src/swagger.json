@@ -1,0 +1,77 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FTT Documentation",
+    "description": "This is an API for a testing project",
+    "version": "1.0.0",
+    "contact": {
+      "email": "kmz@test.com"
+    }
+  },
+  "paths": {
+    "/projects": {
+      "post": {
+        "tags": ["Project"],
+        "sumarry": "Create a project",
+        "description": "Create a new project",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "project name example",
+                  "description": "a project description example"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Project already exists"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Project"],
+        "sumarry": "List all projects",
+        "description": "List all created projects",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
